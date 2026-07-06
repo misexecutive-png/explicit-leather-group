@@ -3,7 +3,7 @@ name: Auto Deploy Changes
 on:
   push:
     branches:
-      - main  # जब भी आप 'main' ब्रांच पर कोड चेंज करेंगे
+      - main
 
 jobs:
   web-deploy:
