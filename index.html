@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Explicit Leather Group — Premium Leather Since 1990</title>
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="mobile.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; }
+
+/* ===== TOPBAR ===== */
+.topbar {
+  background: #2A1A0E; color: #C8A96E; font-size: 11px;
+  padding: 8px 20px; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 6px; letter-spacing: .04em;
+}
+.topbar-right { display: flex; gap: 16px; flex-wrap: wrap; }
+.topbar a { color: #C8A96E; }
+.topbar a:hover { color: #fff; }
+
+/* ===== NAV ===== */
+nav {
+  background: #fff; border-bottom: 1px solid #e8ddd0;
+  padding: 0 24px; display: flex; align-items: center;
+  justify-content: space-between; height: 64px;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: #2A1A0E; line-height: 1.2; }
+.nav-logo span { display: block; font-size: 10px; font-weight: 400; letter-spacing: .14em; color: #8a7060; font-family: 'Segoe UI', sans-serif; }
+.nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+.nav-links a { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #5a4030; font-weight: 500; }
+.nav-links a:hover, .nav-links a.active { color: #2A1A0E; }
+.nav-cta { background: #2A1A0E; color: #C8A96E !important; padding: 9px 20px; font-size: 11px !important; }
+
+/* ===== HAMBURGER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 101;
+}
+.hamburger span { width: 24px; height: 2px; background: #2A1A0E; display: block; transition: all .3s; border-radius: 1px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-bottom: 2px solid #C8A96E;
+  padding: 12px 0 20px;
+  gap: 0;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(42,26,14,.12);
+}
+.mobile-nav a {
+  font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+  color: #5a4030; font-weight: 500; padding: 13px 24px;
+  border-bottom: 1px solid #f0e8de; display: block;
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav.open { display: flex; }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-block; background: #2A1A0E; color: #C8A96E;
+  padding: 14px 28px; font-size: 11px; letter-spacing: .18em;
+  text-transform: uppercase; font-weight: 600; transition: background .3s;
+}
+.btn-primary:hover { background: #6B4423; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px; color: #2A1A0E;
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  font-weight: 600; border-bottom: 1px solid #2A1A0E; padding-bottom: 2px;
+}
+
+/* ===== HERO ===== */
+.hero { min-height: 91vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; background: #f5f0e8; }
+.hero-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.hero-eyebrow .line { width: 40px; height: 1px; background: #C8A96E; }
+.hero-eyebrow span { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #8a7060; font-weight: 500; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 5.5vw, 80px); line-height: 1.05; font-weight: 700; color: #2A1A0E; margin-bottom: 16px; }
+.hero h1 em { font-style: italic; color: #6B4423; }
+.hero-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; color: #7a6a5a; font-style: italic; margin-bottom: 36px; line-height: 1.6; max-width: 400px; }
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.hero-right { position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background-image: url('images/leather.jpg'); background-size: cover; background-position: center; z-index: 1; }
+.hero-texture { position: absolute; inset: 0; z-index: 2; background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px), repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(255,255,255,.02) 2px, rgba(255,255,255,.02) 4px); }
+.hero-overlay { position: absolute; inset: 0; z-index: 3; background: linear-gradient(to right, #f5f0e8 0%, transparent 20%); }
+.hero-badge { position: absolute; bottom: 60px; left: -10px; background: #fff; border: 1px solid #e8ddd0; padding: 22px 26px; z-index: 10; box-shadow: 0 20px 60px rgba(42,26,14,.15); animation: floatY 3s ease-in-out infinite alternate; }
+@keyframes floatY { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+.hero-badge .num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: #2A1A0E; line-height: 1; }
+.hero-badge .lbl { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #8a7060; margin-top: 6px; }
+.hero-badge .bar { width: 28px; height: 2px; background: #C8A96E; margin-bottom: 10px; }
+.hero-numbers { display: flex; gap: 36px; margin-top: 48px; padding-top: 32px; border-top: 1px solid #e8ddd0; }
+.hn .n { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #2A1A0E; }
+.hn .l { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #8a7060; margin-top: 4px; }
+
+/* ===== MARQUEE ===== */
+.marquee-strip { background: #2A1A0E; overflow: hidden; padding: 14px 0; }
+.marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 28px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #C8A96E; font-weight: 500; }
+.marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: #C8A96E; flex-shrink: 0; }
+
+/* ===== RECOGNITION BANNER ===== */
+.recognition-banner { background: #f0e8dc; padding: 24px 40px; display: flex; align-items: center; justify-content: center; gap: 28px; border-top: 1px solid #e0d0bc; border-bottom: 1px solid #e0d0bc; flex-wrap: wrap; }
+.rec-item { display: flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #6B4423; font-weight: 500; }
+.rec-divider { width: 1px; height: 20px; background: rgba(107,68,35,.25); }
+
+/* ===== ABOUT STRIP ===== */
+.about-strip { padding: 100px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: #fff; }
+.about-visual { position: relative; height: 480px; }
+.av-main { position: absolute; top: 0; left: 0; width: 74%; height: 84%; overflow: hidden; background: linear-gradient(160deg, #6B4423, #2A1A0E); }
+.av-main img { width: 100%; height: 100%; object-fit: cover; }
+.av-accent { position: absolute; bottom: 0; right: 0; width: 54%; height: 54%; overflow: hidden; background: linear-gradient(135deg, #C8A96E, #A07840); border: 6px solid #fff; }
+.av-accent img { width: 100%; height: 100%; object-fit: cover; }
+.av-year { position: absolute; top: 28px; right: 8px; background: #2A1A0E; color: #f0e8dc; padding: 16px 14px; text-align: center; z-index: 2; }
+.av-year .y { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; line-height: 1; }
+.av-year .s { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: #C8A96E; margin-top: 4px; }
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-header.left { text-align: left; margin-bottom: 24px; }
+.section-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; color: #C8A96E; font-size: 10px; text-transform: uppercase; letter-spacing: .2em; justify-content: center; }
+.section-eyebrow.left { justify-content: flex-start; }
+.eyebrow-line { width: 36px; height: 1px; background: #C8A96E; flex-shrink: 0; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(34px, 4vw, 56px); font-weight: 700; color: #1a1a1a; margin-bottom: 16px; line-height: 1.15; }
+.section-title em { font-style: italic; color: #C8A96E; }
+.section-desc { font-size: 16px; color: #888; max-width: 600px; margin: 0 auto; font-style: italic; line-height: 1.6; }
+.about-body { color: #7a6a5a; font-size: 15px; line-height: 1.9; margin-bottom: 16px; font-weight: 300; }
+.about-body strong { color: #2A1A0E; font-weight: 500; }
+.highlights { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+.hl-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: #f9f5ef; border-left: 2px solid #C8A96E; }
+.hl-icon { width: 32px; height: 32px; background: #f0e8dc; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; color: #6B4423; }
+.hl-text strong { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #2A1A0E; font-weight: 600; margin-bottom: 3px; }
+.hl-text span { font-size: 13px; color: #8a7060; }
+
+/* ===== STATS ===== */
+.stats-banner { background: #2A1A0E; display: flex; justify-content: center; flex-wrap: wrap; gap: 0; }
+.stat-item { padding: 50px 48px; text-align: center; border-right: 1px solid rgba(200,169,110,.15); flex: 1; min-width: 160px; }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: #C8A96E; }
+.stat-unit { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(200,169,110,.6); margin-top: 4px; }
+.stat-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(232,217,188,.5); margin-top: 8px; }
+
+/* ===== PRODUCTS TEASER ===== */
+.products-teaser { padding: 100px 60px; background: #fff; }
+.pt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.pt-card { background: #fff; border: 1px solid #e8ddd0; overflow: hidden; transition: transform .4s, box-shadow .4s; }
+.pt-card:hover { box-shadow: 0 20px 50px rgba(42,26,14,.11); transform: translateY(-4px); }
+.pt-visual { width: 100%; height: 260px; overflow: hidden; position: relative; background: #e8ddd0; }
+.pt-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.pt-card:hover .pt-visual img { transform: scale(1.05); }
+.pv-tag { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,.5); color: #fff; padding: 6px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; border: 1px solid rgba(255,255,255,.3); z-index: 3; }
+.pt-info { padding: 24px; }
+.pt-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: #2A1A0E; margin-bottom: 8px; }
+.pt-desc { font-size: 13px; color: #7a6a5a; line-height: 1.7; margin-bottom: 16px; }
+.pt-link { color: #C8A96E; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; transition: color .3s; display: inline-flex; align-items: center; gap: 6px; }
+.pt-link:hover { color: #8a6030; }
+
+/* ===== COMPANIES SECTION ===== */
+.sub-section { padding: 100px 60px; background: #f9f5ef; }
+.sub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-top: 56px; }
+.sub-card { position: relative; height: 420px; overflow: hidden; cursor: pointer; }
+.sub-card img.sub-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+.sub-card:hover img.sub-bg { transform: scale(1.06); }
+.sub-tex { position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,.02) 3px, rgba(255,255,255,.02) 6px); z-index: 1; }
+.sub-con { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; background: linear-gradient(to top, rgba(10,5,2,.92) 0%, transparent 100%); z-index: 2; }
+.sub-num { font-family: 'Playfair Display', serif; font-size: 11px; color: #C8A96E; letter-spacing: .3em; margin-bottom: 8px; }
+.sub-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+.sub-desc { font-size: 13px; color: rgba(232,217,188,.7); line-height: 1.6; margin-bottom: 16px; }
+.sub-link { display: inline-flex; align-items: center; gap: 8px; color: #C8A96E; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; transition: gap .3s; }
+.sub-link:hover { gap: 14px; }
+
+/* ===== CTA BANNER ===== */
+.cta-banner { background: #2A1A0E; padding: 80px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; overflow: hidden; }
+.cta-banner::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border: 1px solid rgba(200,169,110,.1); border-radius: 50%; }
+.cta-h { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3vw, 52px); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+.cta-h em { font-style: italic; color: #C8A96E; }
+.cta-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; color: rgba(232,217,188,.7); margin-bottom: 32px; line-height: 1.6; }
+.cta-details { display: flex; flex-direction: column; gap: 20px; }
+.cd-item { display: flex; align-items: flex-start; gap: 16px; }
+.cd-icon { width: 38px; height: 38px; border: 1px solid rgba(200,169,110,.3); display: flex; align-items: center; justify-content: center; color: #C8A96E; font-size: 15px; flex-shrink: 0; }
+.cd-text strong { display: block; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #C8A96E; font-weight: 500; margin-bottom: 3px; }
+.cd-text span { font-size: 14px; color: rgba(232,217,188,.8); line-height: 1.5; display: block; }
+
+/* ===== FOOTER ===== */
+footer { background: #1a0e06; padding: 70px 60px 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(200,169,110,.12); }
+.footer-brand-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #C8A96E; margin-bottom: 4px; }
+.footer-brand-sub { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(200,169,110,.5); margin-bottom: 16px; }
+.footer-desc { font-size: 13px; color: rgba(232,217,188,.5); line-height: 1.8; margin-bottom: 24px; }
+.footer-social { display: flex; gap: 10px; }
+.social-btn { width: 34px; height: 34px; border: 1px solid rgba(200,169,110,.3); display: flex; align-items: center; justify-content: center; color: #C8A96E; font-size: 11px; font-weight: 600; transition: background .3s; }
+.social-btn:hover { background: rgba(200,169,110,.15); }
+.footer-col-title { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #C8A96E; font-weight: 600; margin-bottom: 20px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(232,217,188,.5); transition: color .3s; }
+.footer-links a:hover { color: #C8A96E; }
+.footer-bottom { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(200,169,110,.35); letter-spacing: .06em; flex-wrap: wrap; gap: 8px; }
+
+/* ===== ANIMATIONS ===== */
+.fade-up { animation: fadeUp .8s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== SCROLL TOP ===== */
+.scroll-top { position: fixed; bottom: 28px; right: 28px; width: 42px; height: 42px; background: #2A1A0E; color: #C8A96E; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 200; text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1199px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 70px 40px 60px; }
+  .hero-right { height: 400px; }
+  .hero-numbers { flex-wrap: wrap; gap: 24px; }
+  .hero-badge { bottom: 20px; left: 20px; }
+  .about-strip { grid-template-columns: 1fr; gap: 48px; padding: 80px 40px; }
+  .about-visual { height: 360px; }
+  .pt-grid { grid-template-columns: repeat(2, 1fr); }
+  .sub-grid { grid-template-columns: 1fr 1fr; }
+  .sub-card:last-child { grid-column: 1 / -1; }
+  .cta-banner { grid-template-columns: 1fr; gap: 40px; padding: 70px 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  footer { padding: 60px 40px 0; }
+  .products-teaser { padding: 80px 40px; }
+  .sub-section { padding: 80px 40px; }
+  .stat-item { padding: 40px 28px; min-width: 140px; }
+  .nav-links { gap: 18px; }
+  .recognition-banner { gap: 18px; padding: 20px 24px; }
+  .rec-divider { display: none; }
+}
+
+@media (max-width: 767px) {
+  /* Topbar */
+  .topbar { font-size: 10px; flex-direction: column; align-items: flex-start; gap: 4px; padding: 8px 16px; }
+  .topbar-right { gap: 6px; flex-direction: column; }
+
+  /* Nav */
+  nav { padding: 0 16px; height: 56px; display: flex !important; }
+  .nav-logo { font-size: 15px; }
+  .nav-logo span { display: none; }
+  .nav-links { display: none !important; }
+  
+  /* Force Hamburger Display */
+  .hamburger { display: flex !important; }
+
+  /* Mobile nav top position = nav height */
+  .mobile-nav { top: 56px; }
+  
+  /* Fixed Mobile Nav Display when open */
+  .mobile-nav.open, #mobileNav.open { 
+    display: flex !important; 
+  }
+
+  /* Hero */
+  .hero-left { padding: 48px 20px 40px; }
+  .hero h1 { font-size: clamp(34px, 9vw, 50px); }
+  .hero-sub { font-size: 15px; max-width: 100%; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero-right { height: 280px; }
+  .hero-badge { bottom: 16px; left: 16px; padding: 14px 18px; }
+  .hero-badge .num { font-size: 24px; }
+  .hero-numbers { gap: 16px; margin-top: 28px; padding-top: 20px; flex-wrap: wrap; }
+  .hn .n { font-size: 20px; }
+
+  /* Recognition */
+  .recognition-banner { flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px; }
+  .rec-divider { display: none; }
+
+  /* About */
+  .about-strip { grid-template-columns: 1fr; gap: 32px; padding: 52px 16px; }
+  .about-visual { height: 260px; }
+  .av-year { top: 12px; right: 4px; padding: 10px; }
+  .av-year .y { font-size: 20px; }
+
+  /* Stats */
+  .stats-banner { flex-direction: column; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(200,169,110,.1); padding: 28px 20px; min-width: unset; }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-num { font-size: 30px; }
+
+  /* Products */
+  .products-teaser { padding: 52px 16px; }
+  .pt-grid { grid-template-columns: 1fr; gap: 16px; }
+  .pt-visual { height: 210px; }
+  .section-title { font-size: clamp(26px, 7vw, 38px); }
+  .section-desc { font-size: 14px; }
+  .section-header { margin-bottom: 32px; }
+
+  /* Companies */
+  .sub-section { padding: 52px 16px; }
+  .sub-grid { grid-template-columns: 1fr; gap: 3px; margin-top: 32px; }
+  .sub-card { height: 300px; }
+  .sub-card:last-child { grid-column: auto; }
+  .sub-name { font-size: 18px; }
+
+  /* CTA */
+  .cta-banner { grid-template-columns: 1fr; gap: 32px; padding: 52px 16px; }
+  .cta-banner::before { display: none; }
+  .cta-h { font-size: clamp(26px, 7vw, 38px); }
+  .cta-sub { font-size: 15px; margin-bottom: 24px; }
+
+  /* Footer */
+  footer { padding: 44px 16px 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4px; padding: 18px 0; }
+  .footer-brand-name { font-size: 18px; }
+
+  /* Scroll top */
+  .scroll-top { bottom: 16px; right: 16px; width: 38px; height: 38px; font-size: 15px; }
+
+  /* Buttons full width on mobile */
+  .btn-primary { padding: 13px 20px; }
+}
+
+@media (max-width: 400px) {
+  .hero h1 { font-size: 28px; }
+  .hero-right { height: 220px; }
+  .hero-badge { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div>📍 Plot No. 8, 14/3, Mathura Road, Faridabad, India</div>
+  <div class="topbar-right">
+    <a href="tel:+919999831332">☎ +91 9999 831 332</a>
+    <a href="mailto:explicit@explicitleathers.in">✉ explicit@explicitleathers.in</a>
+    <a href="https://www.instagram.com/explicitleathergroup/" target="_blank">◆ Instagram</a>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    Explicit Leather
+    <span>Group — Est. 1985</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="companies.html">Companies</a></li>
+    <li><a href="finished-leather.html">Finished Leather</a></li>
+    <li><a href="corporate-gifting.html">Gifting</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="hamburgerBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up"><div class="line"></div><span>Council of Leather Exports — Govt. of India Recognised</span></div>
+    <h1 class="fade-up">Craft Beyond<br><em>Ordinary.</em></h1>
+    <p class="hero-sub fade-up">India's premier leather group — manufacturing garments, accessories &amp; finished leather with artisanal precision for global markets.</p>
+    <div class="hero-actions fade-up">
+      <a href="about.html" class="btn-ghost">Our Story <span>→</span></a>
+    </div>
+    <div class="hero-numbers fade-up">
+      <div class="hn"><div class="n">35+</div><div class="l">Years of Craft</div></div>
+      <div class="hn"><div class="n">4</div><div class="l">Group Companies</div></div>
+      <div class="hn"><div class="n">Global</div><div class="l">Export Reach</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-badge">
+      <div class="bar"></div>
+      <div class="num">84L</div>
+      <div class="lbl">Sq Ft Leather<br>Produced / Year</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip"><div class="marquee-track">
+  <div class="marquee-item"><span class="marquee-dot"></span>Garment Washed Leather</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Garment Dyed Speciality</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Retro &amp; Oiled Finishes</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Recognised Export House</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Council of Leather Exports</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>2.1M Sq Ft Capacity/Year</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>24,000 Bags Annually</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Garment Washed Leather</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Garment Dyed Speciality</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Retro &amp; Oiled Finishes</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Recognised Export House</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>Council of Leather Exports</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>2.1M Sq Ft Capacity/Year</div>
+  <div class="marquee-item"><span class="marquee-dot"></span>24,000 Bags Annually</div>
+</div></div>
+
+<!-- RECOGNITION -->
+<div class="recognition-banner">
+  <div class="rec-item">◆ Govt. of India Recognised</div>
+  <div class="rec-divider"></div>
+  <div class="rec-item">◆ Council of Leather Exports</div>
+  <div class="rec-divider"></div>
+  <div class="rec-item">◆ Premium Export House</div>
+  <div class="rec-divider"></div>
+  <div class="rec-item">◆ 35+ Years of Excellence</div>
+</div>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-visual fade-up">
+    <div class="av-main"><img src="images/01.jpg" alt="Leather Mastery"></div>
+    <div class="av-accent"><img src="images/scorpius.jpg" alt="Leather Texture"></div>
+    <div class="av-year"><div class="y">1990</div><div class="s">Est.</div></div>
+  </div>
+  <div class="fade-up">
+    <div class="section-header left">
+      <div class="section-eyebrow left"><div class="eyebrow-line"></div><span>About The Group</span></div>
+      <h2 class="section-title">A Legacy of<br><em>Leather Mastery</em></h2>
+    </div>
+    <p class="about-body">Explicit Leather Group is a leading leather goods and garments manufacturing firm, operating as a <strong>Recognised Export House</strong> under the Council of Leather Exports, Government of India.</p>
+    <p class="about-body">Pioneers of the <strong>"used", "oiled", and "retro" looks</strong> in leather fashion — Explicit has defined global leather trends for over three decades.</p>
+    <div class="highlights">
+      <div class="hl-item"><div class="hl-icon">✦</div><div class="hl-text"><strong>Award-Winning Design Team</strong><span>Dedicated garments and goods divisions with global trend forecasting</span></div></div>
+      <div class="hl-item"><div class="hl-icon">◈</div><div class="hl-text"><strong>Pioneer Finishes</strong><span>Originated garment-washed and specially dyed leather looks still in vogue</span></div></div>
+      <div class="hl-item"><div class="hl-icon">⬡</div><div class="hl-text"><strong>Integrated Group</strong><span>Four specialised companies under one premium umbrella</span></div></div>
+    </div>
+    <a href="about.html" class="btn-primary">Read Our Story</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-banner">
+  <div class="stat-item fade-up"><div class="stat-num">2.1M</div><span class="stat-unit">Sq Ft Per Year</span><div class="stat-label">Total Production Area</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">180K</div><span class="stat-unit">Per Year</span><div class="stat-label">Garment Production</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">24K</div><span class="stat-unit">Bags Annually</span><div class="stat-label">Leather Bag Output</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">84L</div><span class="stat-unit">Sq Ft / Year</span><div class="stat-label">Combined Tannery Output</div></div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-teaser">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span>What We Offer</span><div class="eyebrow-line"></div></div>
+    <h2 class="section-title">Premium <em>Collections</em></h2>
+    <p class="section-desc">From handcrafted garments to corporate gifting — every product reflects decades of leather mastery.</p>
+  </div>
+  <div class="pt-grid">
+    <div class="pt-card fade-up">
+      <div class="pt-visual"><img src="images/leather jacket-111.png" alt="Leather Garments"><div class="pv-tag">Flagship</div></div>
+      <div class="pt-info"><div class="pt-name">Leather Garments</div><div class="pt-desc">Jackets, coats &amp; apparel using pioneered washed and oiled finishes that set global trends.</div><a href="products.html" class="pt-link">View Collection →</a></div>
+    </div>
+    <div class="pt-card fade-up">
+      <div class="pt-visual"><img src="images/BAG-6.png" alt="Leather Bags"><div class="pv-tag">24,000/Year</div></div>
+      <div class="pt-info"><div class="pt-name">Leather Bags</div><div class="pt-desc">Premium leather bags of exceptional craftsmanship for global markets.</div><a href="products.html" class="pt-link">View Collection →</a></div>
+    </div>
+    <div class="pt-card fade-up">
+      <div class="pt-visual"><img src="images/scorpius.jpg" alt="Finished Leather"><div class="pv-tag">84L Sq Ft</div></div>
+      <div class="pt-info"><div class="pt-name">Finished Leather</div><div class="pt-desc">Premium tanned and finished leather supplied to global manufacturers and fashion houses.</div><a href="finished-leather.html" class="pt-link">View Details →</a></div>
+    </div>
+    <div class="pt-card fade-up">
+      <div class="pt-visual"><img src="images/gf-2.png" alt="Corporate Gifting"><div class="pv-tag">Bespoke</div></div>
+      <div class="pt-info"><div class="pt-name">Corporate Gifting</div><div class="pt-desc">Bespoke leather gifts tailored for corporate identity — refined, memorable, and lasting.</div><a href="corporate-gifting.html" class="pt-link">Enquire Now →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANIES -->
+<section class="sub-section">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span>Our Companies</span><div class="eyebrow-line"></div></div>
+    <h2 class="section-title">The <em>Explicit</em> Family</h2>
+    <p class="section-desc">Three specialised enterprises united under one premium leather group.</p>
+  </div>
+  <div class="sub-grid">
+    <div class="sub-card">
+      <img src="images/11-1.png" alt="Explicit Import Export" class="sub-bg">
+      <div class="sub-tex"></div>
+      <div class="sub-con"><div class="sub-num">01 / 03</div><div class="sub-name">Explicit Import Export Private Limited</div><div class="sub-desc">The flagship enterprise. Pioneer of garment-washed and specially dyed leather products exported globally.</div><a href="companies.html" class="sub-link">Explore →</a></div>
+    </div>
+    <div class="sub-card">
+      <img src="images/11-3.png" alt="Exquisite Enterprises" class="sub-bg">
+      <div class="sub-tex"></div>
+      <div class="sub-con"><div class="sub-num">02 / 03</div><div class="sub-name">Exquisite Enterprises</div><div class="sub-desc">High-end leather goods and accessories crafted for luxury international markets.</div><a href="companies.html" class="sub-link">Explore →</a></div>
+    </div>
+    <div class="sub-card">
+      <img src="images/11-2.png" alt="Scorpius Enterprises" class="sub-bg">
+      <div class="sub-tex"></div>
+      <div class="sub-con"><div class="sub-num">03 / 03</div><div class="sub-name">Scorpius Enterprises</div><div class="sub-desc">Innovative leather manufacturing with cutting-edge tanning processes and premium finishes.</div><a href="companies.html" class="sub-link">Explore →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="fade-up" style="position:relative;z-index:2">
+    <h2 class="cta-h">Let's Create<br><em>Together.</em></h2>
+    <p class="cta-sub">Whether you're a buyer, retailer, or corporate partner — we're ready to bring your leather vision to life.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="contact.html" class="btn-primary">Contact Us</a>
+    </div>
+  </div>
+  <div class="cta-details fade-up" style="position:relative;z-index:2">
+    <div class="cd-item"><div class="cd-icon">📍</div><div class="cd-text"><strong>Factory &amp; Office</strong><span>Plot No. 8, 14/3, Mathura Road<br>Opp. Havells Ltd., Faridabad, INDIA</span></div></div>
+    <div class="cd-item"><div class="cd-icon">☎</div><div class="cd-text"><strong>Call Us</strong><span>+91 9999 831 332 &nbsp;|&nbsp; 0129 4255 000</span></div></div>
+    <div class="cd-item"><div class="cd-icon">✉</div><div class="cd-text"><strong>Email</strong><span>explicit@explicitleathers.in</span></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Explicit Leather Group</div>
+      <div class="footer-brand-sub">Est. 1990 · Faridabad, India</div>
+      <p class="footer-desc">India's premier leather manufacturing group — pioneers of garment-washed and specialty-dyed leather for global markets. Recognised Export House, Govt. of India.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#">in</a>
+        <a class="social-btn" href="https://www.instagram.com/explicitleathergroup/" target="_blank">IG</a>
+        <a class="social-btn" href="#">fb</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="companies.html">Companies</a></li>
+        <li><a href="finished-leather.html">Finished Leather</a></li>
+        <li><a href="corporate-gifting.html">Corporate Gifting</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Group Companies</div>
+      <ul class="footer-links">
+        <li><a href="companies.html">Explicit Import Export Private Limited</a></li>
+        <li><a href="companies.html">Scorpius Enterprises</a></li>
+        <li><a href="companies.html">Gee &amp; Gee Industries</a></li>
+        <li><a href="companies.html">Exquisite Enterprises</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Explicit Leather Group. All rights reserved.</span>
+    <span>Faridabad, Haryana, India</span>
+  </div>
+</footer>
+
+<a class="scroll-top" href="#" id="scrollTop">↑</a>
+
+<script src="common.js"></script>
+
+
+
+</body>
+</html>

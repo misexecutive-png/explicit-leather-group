@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"> -->
+  <title>Explicit Leathers — Explicit Leather Group</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="mobile.css"> 
+  <style>
+  .photo-hero-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:380px 240px;gap:16px;margin-top:60px}
+  .ph-item{position:relative;overflow:hidden;background-color: #f9f9f9;border: 1px solid var(--border);display: flex;justify-content: center;align-items: center;}
+  .ph-item:first-child{grid-row:span 2}
+  .ph-item img{width:100%;height:100%;object-fit:contain; display: block;padding: 15px; box-sizing: border-box;transform: 1.1;background: #fff;}
+  .ph-item:hover img{transform:scale(2.0);cursor: pointer;}
+  .ph-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(200,169,110,.2);transition:border-color .3s;cursor:pointer}
+  .ph-placeholder:hover{border-color:rgba(200,169,110,.5)}
+  .ph-icon{font-size:26px;opacity:.38;margin-bottom:10px}
+  .ph-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);opacity:.65}
+  .ph-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:rgba(232,217,188,.35);margin-top:6px}
+  .products-catalog{padding:100px 60px;background:var(--cream)}
+  .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;align-items: start;}
+  .pcard{background:var(--white);border:1px solid var(--border);overflow:hidden;transition:box-shadow .4s,transform .3s}
+  .pcard:hover{box-shadow:0 20px 50px rgba(42,26,14,.12);transform:translateY(-4px)}
+  .pphoto{height:300px;position:relative;overflow:hidden;background-color:#fff;}
+  .pphoto img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .6s}
+  .pcard:hover .pphoto img{transform:scale(1.2)}
+  .pph{width:100%;height:100%;width:auto;height: auto;display:block;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(200,169,110,.15)}
+  .pph:hover{border-color:rgba(200,169,110,.4)}
+  .pph-i{font-size:24px;opacity:.3;margin-bottom:8px}
+  .pph-l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);opacity:.55}
+  .pinfo{padding:24px}
+  .pcat{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--tan-dark);font-weight:500;margin-bottom:6px}
+  .pname{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--espresso);margin-bottom:8px}
+  .pdesc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+  .plink{display:inline-flex;align-items:center;gap:8px;color:var(--tan-dark);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:gap .3s}
+  .plink:hover{gap:14px}
+  .codetail{padding:100px 60px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .dvis{position:relative;height:500px;overflow:hidden}
+  .dvis img{width:100%;height:100%;object-fit:cover;display:block}
+  .dph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(200,169,110,.18);cursor:pointer}
+  .dph:hover{border-color:var(--gold)}
+  .dph-i{font-size:42px;opacity:.26;margin-bottom:14px}
+  .dph-l{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tan);opacity:.6}
+  .dph-s{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(232,217,188,.32);margin-top:6px}
+  .dbadge{position:absolute;bottom:24px;right:24px;background:var(--espresso);color:var(--tan-light);padding:16px;text-align:center;z-index:2}
+  .dbadge .n{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1}
+  .dbadge .l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);margin-top:4px}
+  .dbody{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:18px;font-weight:300}
+  .dbody strong{color:var(--espresso);font-weight:500}
+  .srow{display:flex;margin:28px 0;border:1px solid var(--border)}
+  .scell{flex:1;padding:20px;border-right:1px solid var(--border);text-align:center}
+  .scell:last-child{border-right:none}
+  .sv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--espresso)}
+  .sl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .dtags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .dtag{padding:6px 14px;background:var(--tan-light);color:var(--brown);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  .inqsec{padding:100px 60px;background:var(--ivory);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .iform{background:var(--white);border:1px solid var(--border);padding:40px}
+  .iform input,.iform textarea{width:100%;padding:15px 18px;border:1px solid var(--border);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;outline:none;transition:.3s;margin-bottom:14px;display:block;box-sizing:border-box}
+  .iform input:focus,.iform textarea:focus{border-color:var(--gold)}
+  .iform textarea{min-height:130px;resize:none}
+  .crow{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+  .crow:last-child{border-bottom:none}
+  .cico{width:40px;height:40px;background:var(--espresso);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex-shrink:0}
+  .clbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--tan-dark);display:block;margin-bottom:3px}
+  .cval{font-size:14px;color:var(--espresso)}
+
+  /* ===== Gallery Slider (swipeable, multiple photos) ===== */
+  .gallery-slider{position:relative;margin-top:60px;width:100%;overflow:hidden;border:1px solid var(--border);background:#f9f9f9;user-select:none;}
+  .gs-track{display:flex;transition:transform .45s cubic-bezier(.2,.7,.3,1);cursor:grab;touch-action:pan-y;}
+  .gs-track.dragging{transition:none;cursor:grabbing;}
+  .gs-slide{flex:0 0 100%;height:560px;display:flex;align-items:center;justify-content:center;background:#fff;}
+  .gs-slide img{width:100%;height:100%;object-fit:contain;padding:20px;box-sizing:border-box;pointer-events:none;}
+  .gs-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(42,26,14,.55);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;z-index:3;transition:background .3s;}
+  .gs-arrow:hover{background:var(--espresso);}
+  .gs-prev{left:18px}
+  .gs-next{right:18px}
+  .gs-dots{position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:3;}
+  .gs-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);border:1px solid rgba(42,26,14,.3);cursor:pointer;padding:0;transition:.3s;}
+  .gs-dot.active{background:var(--espresso);width:22px;border-radius:5px;}
+  .gs-counter{position:absolute;top:16px;right:18px;background:rgba(42,26,14,.55);color:#fff;font-size:11px;letter-spacing:.1em;padding:5px 10px;border-radius:3px;z-index:3;}
+  @media(max-width:768px){.gs-slide{height:340px}.gs-arrow{width:36px;height:36px;font-size:16px}}
+  </style>
+  </head>
+  <body>
+  <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+  <div class="topbar">
+    <div>📍 Plot No. 8, 14/3, Mathura Road, Faridabad, India</div>
+    <div class="topbar-right"><a href="tel:+919999831332">☎ +91 9999 831 332</a><a href="mailto:explicit@explicitleathers.in">✉ explicit@explicitleathers.in</a></div>
+  </div>
+  <nav>
+    <a class="nav-logo" href="index.html">Explicit Leather<span>Group — Est. 1990</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="companies.html" class="active">Companies</a></li>
+      <li><a href="finished-leather.html">Finished Leather</a></li><li><a href="corporate-gifting.html">Gifting</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="page-hero">
+    <div class="page-hero-inner fade-up">
+      <div class="ph-eyebrow"><div class="line"></div><span>01 / 04 — Flagship Enterprise</span></div>
+      <h1>Explicit<br><em>Leathers</em></h1>
+      <p>The original export house — pioneers of garment-washed, oiled, and retro leather looks for global fashion markets since 1990.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="companies.html">Companies</a><span class="breadcrumb-sep">›</span><span>Explicit Leathers</span></div>
+    </div>
+  </div>
+  <div class="marquee-strip"><div class="marquee-track"><div class="marquee-item"><span class="marquee-dot"></span>Leather Jackets</div><div class="marquee-item"><span class="marquee-dot"></span>Garment Washed</div><div class="marquee-item"><span class="marquee-dot"></span>Oiled Finish</div><div class="marquee-item"><span class="marquee-dot"></span>Retro Look</div><div class="marquee-item"><span class="marquee-dot"></span>Export House</div><div class="marquee-item"><span class="marquee-dot"></span>180K Garments/Year</div><div class="marquee-item"><span class="marquee-dot"></span>Leather Jackets</div><div class="marquee-item"><span class="marquee-dot"></span>Garment Washed</div><div class="marquee-item"><span class="marquee-dot"></span>Oiled Finish</div><div class="marquee-item"><span class="marquee-dot"></span>Retro Look</div><div class="marquee-item"><span class="marquee-dot"></span>Export House</div><div class="marquee-item"><span class="marquee-dot"></span>180K Garments/Year</div></div></div>
+
+  <section style="padding:100px 60px;background:var(--ivory)">
+    <div class="section-header fade-up">
+      <div class="section-eyebrow"><div class="eyebrow-line"></div><span>Gallery</span><div class="eyebrow-line"></div></div>
+      <h2 class="section-title">Our <em>Work</em></h2>
+      <p class="section-desc">Swipe or use the arrows to browse — add as many photos as you like in the slider below.</p>
+    </div>
+
+    <!-- ===== Swipeable Gallery Slider ===== -->
+    <!-- TO ADD MORE PHOTOS: just add a new <div class="gs-slide"><img src="images/yourphoto.jpg" alt="..."></div> inside #gsTrack -->
+    <div class="gallery-slider fade-up" id="gallerySlider">
+      <div class="gs-counter"><span id="gsCurrent">1</span> / <span id="gsTotal">5</span></div>
+      <div class="gs-track" id="gsTrack">
+        <div class="gs-slide"><img src="images/09.jpg" alt="Orange Leather Jacket" class="product-image"></div>
+        <div class="gs-slide"><img src="images/05.jpg" alt="Orange Leather Jacket" class="product-image"></div>
+        <div class="gs-slide"><img src="images/12.jpg" alt="Purple Leather Jacket" class="product-image"></div>
+        <div class="gs-slide"><img src="images/06.jpg" alt="Black Leather Jacket" class="product-image"></div>
+        <div class="gs-slide"><img src="images/10.jpg" alt="Long Leather Jacket" class="product-image"></div>
+      </div>
+      <button class="gs-arrow gs-prev" id="gsPrev" aria-label="Previous">‹</button>
+      <button class="gs-arrow gs-next" id="gsNext" aria-label="Next">›</button>
+      <div class="gs-dots" id="gsDots"></div>
+    </div>
+  </section>
+
+  <section class="codetail">
+    <div class="dvis fade-up" style="background:linear-gradient(160deg,#1a0e05,#6B4423 55%,#C8A96E)">
+      <img src="images/01.jpg" alt="The Original">
+      <div class="dbadge"><div class="n">1985</div><div class="l">Founded</div></div>
+    </div>
+    <div class="fade-up">
+      <div class="section-header left">
+        <div class="section-eyebrow left"><div class="eyebrow-line"></div><span>About Explicit Leathers</span></div>
+        <h2 class="section-title">The Original<br><em>Export House</em></h2>
+      </div>
+      <p class="dbody">Founded in <strong>1985 in Faridabad</strong>, Explicit Leathers is a Recognised Export House under the Council of Leather Exports, Government of India — the flagship enterprise of the group.</p>
+      <p class="dbody">World-renowned for pioneering <strong>Garment Washed and Garment Dyed leather products</strong> — the 'used', 'oiled' and 'retro' looks that remain in vogue globally after 30+ years.</p>
+      <div class="srow">
+        <div class="scell"><div class="sv">180K</div><div class="sl">Garments / Year</div></div>
+        <div class="scell"><div class="sv">35+</div><div class="sl">Years Operating</div></div>
+        <div class="scell"><div class="sv">Global</div><div class="sl">Export Markets</div></div>
+      </div>
+      <div class="dtags"><span class="dtag">Garments</span><span class="dtag">Accessories</span><span class="dtag">Export House</span><span class="dtag">Washed Leather</span><span class="dtag">Garment Dyed</span></div>
+      <div style="margin-top:28px"><a href="contact.html" class="btn-primary">Send Inquiry</a></div>
+    </div>
+  </section>
+  <section class="products-catalog">
+    <div class="section-header fade-up">
+      <div class="section-eyebrow"><div class="eyebrow-line"></div><span>Product Catalog</span><div class="eyebrow-line"></div></div>
+      <h2 class="section-title">Our <em>Collections</em></h2>
+      <p class="section-desc">Add your product photos — replace each placeholder with your image path.</p>
+    </div>
+    <div class="pg">
+      <div class="pcard fade-up">
+        <div class="pphoto" style="background:linear-gradient(135deg,#2A1A0E,#8B5A2B)">
+          <img src="images/new-style.jpg" alt="Garment Washed Leather Jackets">
+        </div>
+        <div class="pinfo">
+          <div class="pcat">★ Flagship</div>
+          <div class="pname">Garment Washed Leather Jackets</div>
+          <div class="pdesc">Proprietary wash process creates an authentically aged, character-rich finish. Available in 20+ colourways globally demanded.</div>
+          <a href="contact.html" class="plink">Enquire →</a>
+        </div>
+      </div>
+      <div class="pcard fade-up">
+        <div class="pphoto" style="background:linear-gradient(135deg,#1a0a05,#6b3a18)">
+          <img src="images/embrodery.jpg" alt="Oiled &amp; Pull-Up Jackets">
+        </div>
+        <div class="pinfo">
+          <div class="pcat">Garments</div>
+          <div class="pname">Oiled &amp; Pull-Up Jackets</div>
+          <div class="pdesc">Deep oiled finish that develops a beautiful patina with use — a timeless classic.</div>
+          <a href="contact.html" class="plink">Enquire →</a>
+        </div>
+      </div>
+      <div class="pcard fade-up">
+        <div class="pphoto" style="background:linear-gradient(135deg,#0e0805,#4a2a10)">
+          <img src="images/cognac.jpg" alt="Retro &amp; Vintage Coats">
+        </div>
+        <div class="pinfo">
+          <div class="pcat">Garments</div>
+          <div class="pname">Retro &amp; Vintage Coats</div>
+          <div class="pdesc">The retro look Explicit originated — worn, distressed character in premium leather.</div>
+          <a href="contact.html" class="plink">Enquire →</a>
+        </div>
+      </div>
+      <div class="pcard fade-up">
+        <div class="pphoto" style="background:linear-gradient(135deg,#180e05,#7a4520)">
+          <img src="images/charcola balck.jpg" alt="Garment Dyed Jacket">
+        </div>
+        <div class="pinfo">
+          <div class="pcat">Accessories</div>
+          <div class="pname">Garment Dyed Jacket</div>
+          <div class="pdesc">Belts, bags, and small leather goods in our signature garment-dyed technique.</div>
+          <a href="contact.html" class="plink">Enquire →</a>
+        </div>
+      </div>
+      <div class="pcard fade-up">
+        <div class="pphoto" style="background:linear-gradient(135deg,#100805,#5a3015)">
+          <img src="images/long.png" alt="Garment Dyed Jacket">
+        </div>
+        <div class="pinfo">
+          <div class="pcat">Garments</div>
+          <div class="pname">Garment Dyed Coats</div>
+          <div class="pdesc">Specially dyed leather coats with rich, deep tones. Each piece has unique colour character.</div>
+          <a href="contact.html" class="plink">Enquire →</a>
+        </div>
+      </div>
+      <div class="pcard fade-up">
+        <div class="pphoto" style="background:linear-gradient(135deg,#2A1A0E,#C8A96E)">
+          <img src="images/black.jpg" class="product-image11" alt="Garment Dyed Jacket">
+        </div>
+        <div class="pinfo">
+          <div class="pcat">Custom</div>
+          <div class="pname">Bespoke Season Orders</div>
+          <div class="pdesc">Co-develop custom collections with our in-house design team for your brand's season.</div>
+          <a href="contact.html" class="plink">Start Design →</a>
+        </div>
+      </div></div>
+  </section>
+
+  <section class="stats-banner">
+    <div class="stat-item fade-up"><div class="stat-num">180K</div><span class="stat-unit">Per Year</span><div class="stat-label">Garment Output</div></div>
+    <div class="stat-item fade-up"><div class="stat-num">35+</div><span class="stat-unit">Years</span><div class="stat-label">Export Experience</div></div>
+    <div class="stat-item fade-up"><div class="stat-num">20+</div><span class="stat-unit">Finishes</span><div class="stat-label">Colour Options</div></div>
+    <div class="stat-item fade-up"><div class="stat-num">Global</div><span class="stat-unit">Markets</span><div class="stat-label">Export Destinations</div></div>
+  </section>
+
+  <section class="inqsec">
+    <div class="fade-up">
+      <div class="section-header left">
+        <div class="section-eyebrow left"><div class="eyebrow-line"></div><span>Get In Touch</span></div>
+        <h2 class="section-title">Request Our<br><em>Catalogue</em></h2>
+        <p class="section-desc">Our team responds within 24 hours.</p>
+      </div>
+      <div style="margin-top:32px">
+        <div class="crow"><div class="cico">📍</div><div><span class="clbl">Address</span><span class="cval">Plot No. 8, 14/3, Mathura Road, Faridabad</span></div></div>
+        <div class="crow"><div class="cico">☎</div><div><span class="clbl">Phone</span><span class="cval">+91 9999 831 332</span></div></div>
+        <div class="crow"><div class="cico">✉</div><div><span class="clbl">Email</span><span class="cval">explicit@explicitleathers.in</span></div></div>
+      </div>
+      <div style="margin-top:28px"><a href="companies.html" class="btn-ghost">← Back to Companies <span class="arr"></span></a></div>
+    </div>
+    <div class="iform fade-up">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--espresso);margin-bottom:6px">Send Inquiry</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:24px">Explicit Leathers — Garments &amp; Accessories</div>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Email Address">
+      <input type="text" placeholder="Company / Brand Name">
+      <input type="text" placeholder="Product Requirement (e.g. Washed Jackets — 500pcs)">
+      <textarea placeholder="Describe your requirement in detail..."></textarea>
+      <button class="btn-primary" style="width:100%;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em">Send Inquiry →</button>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">Explicit Leather Group</div><div class="footer-brand-sub">Est. 1990 · Faridabad, India</div><p class="footer-desc">India's premier leather manufacturing group — pioneers of garment-washed and specialty-dyed leather for global markets.</p><div class="footer-social"><a class="social-btn" href="#">in</a><a class="social-btn" href="#">IG</a><a class="social-btn" href="#">fb</a></div></div>
+      <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Leather Products</a></li><li><a href="finished-leather.html">Finished Leather</a></li><li><a href="corporate-gifting.html">Corporate Gifting</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+      <div><div class="footer-col-title">Group Companies</div><ul class="footer-links">
+        <li><a href="company-explicit-leathers.html">Explicit Leathers</a></li>
+        <li><a href="company-exquisite.html">Exquisite Enterprises</a></li>
+        <li><a href="company-gee-gee.html">Gee &amp; Gee Industries</a></li>
+        <li><a href="company-scorpius.html">Scorpius Enterprises</a></li>
+        <li><a href="https://nauvab.com/" target="_blank">Nauvab ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Explicit Leather Group. All rights reserved.</span><span>Faridabad, Haryana, India</span></div>
+  </footer>
+  <div id="imageModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.9); justify-content:center; align-items:center;">
+    <span id="closeModal" style="position:absolute; top:20px; right:35px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer;">&times;</span>
+    <img id="modalImg" style="max-width:90%; max-height:90%; object-fit:contain; border: 2px solid #fff;">
+</div>
+  <a class="scroll-top" href="#" id="scrollTop">↑</a>
+  <script src="common.js"></script>
+
+  <script>
+  // ===== Swipeable / Draggable Gallery Slider =====
+  (function(){
+    const slider  = document.getElementById('gallerySlider');
+    if(!slider) return;
+    const track   = document.getElementById('gsTrack');
+    const slides  = Array.from(track.children);
+    const prevBtn = document.getElementById('gsPrev');
+    const nextBtn = document.getElementById('gsNext');
+    const dotsWrap= document.getElementById('gsDots');
+    const curEl   = document.getElementById('gsCurrent');
+    const totEl   = document.getElementById('gsTotal');
+    let index = 0;
+    const total = slides.length;
+    totEl.textContent = total;
+
+    // build dots
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'gs-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function update(){
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      curEl.textContent = index + 1;
+    }
+    function goTo(i){
+      index = (i + total) % total;
+      update();
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+
+    // keyboard support
+    slider.setAttribute('tabindex', '0');
+    slider.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
+    });
+
+    // touch / mouse swipe
+    let startX = 0, currentX = 0, isDragging = false, startTranslate = 0;
+
+    function getX(e){
+      return e.touches ? e.touches[0].clientX : e.clientX;
+    }
+    function dragStart(e){
+      isDragging = true;
+      startX = getX(e);
+      startTranslate = -index * slider.clientWidth;
+      track.classList.add('dragging');
+    }
+    function dragMove(e){
+      if(!isDragging) return;
+      currentX = getX(e);
+      const delta = currentX - startX;
+      track.style.transform = `translateX(${startTranslate + delta}px)`;
+    }
+    function dragEnd(e){
+      if(!isDragging) return;
+      isDragging = false;
+      track.classList.remove('dragging');
+      const delta = currentX - startX;
+      const threshold = slider.clientWidth * 0.15;
+      if(delta > threshold) prev();
+      else if(delta < -threshold) next();
+      else update();
+      startX = 0; currentX = 0;
+    }
+
+    track.addEventListener('touchstart', dragStart, {passive:true});
+    track.addEventListener('touchmove', dragMove, {passive:true});
+    track.addEventListener('touchend', dragEnd);
+
+    track.addEventListener('mousedown', dragStart);
+    window.addEventListener('mousemove', dragMove);
+    window.addEventListener('mouseup', dragEnd);
+    track.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // optional autoplay (comment out if not needed)
+    let autoplay = setInterval(next, 4500);
+    slider.addEventListener('mouseenter', () => clearInterval(autoplay));
+    slider.addEventListener('mouseleave', () => { autoplay = setInterval(next, 4500); });
+
+    update();
+  })();
+  </script>
+  </body></html>

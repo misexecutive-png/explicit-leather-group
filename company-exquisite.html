@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exquisite Enterprises — Explicit Leather Group</title>
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="mobile.css"> 
+<style>
+.photo-slider{position:relative;margin-top:60px;overflow:hidden;border-radius:2px}
+.slider-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);touch-action:pan-y;cursor:grab}
+.slider-track:active{cursor:grabbing}
+.slide{flex:0 0 100%;height:560px;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(14,26,5,.55);border:1px solid rgba(232,217,188,.3);color:var(--tan-light);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:.3s;backdrop-filter:blur(4px)}
+.slider-arrow:hover{background:var(--espresso);border-color:var(--gold)}
+.slider-arrow.prev{left:20px}
+.slider-arrow.next{right:20px}
+.slider-dots{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:3}
+.slider-dot{width:8px;height:8px;border-radius:50%;background:rgba(232,217,188,.4);cursor:pointer;transition:.3s;border:none;padding:0}
+.slider-dot.active{background:var(--gold);width:22px;border-radius:5px}
+.slider-counter{position:absolute;top:20px;right:20px;background:rgba(14,26,5,.55);color:var(--tan-light);font-size:11px;letter-spacing:.1em;padding:7px 14px;z-index:3;backdrop-filter:blur(4px)}
+@media(max-width:768px){.slide{height:360px}.slider-arrow{width:38px;height:38px;font-size:15px}}
+.products-catalog{padding:100px 60px;background:var(--cream)}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.pcard{background:var(--white);border:1px solid var(--border);overflow:hidden;transition:box-shadow .4s,transform .3s}
+.pcard:hover{box-shadow:0 20px 50px rgba(42,26,14,.12);transform:translateY(-4px)}
+.pphoto{height:260px;position:relative;overflow:hidden}
+.pphoto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.pcard:hover .pphoto img{transform:scale(1.05)}
+.pph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(200,169,110,.15)}
+.pph:hover{border-color:rgba(200,169,110,.4)}
+.pph-i{font-size:24px;opacity:.3;margin-bottom:8px}
+.pph-l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);opacity:.55}
+.pinfo{padding:24px}
+.pcat{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--tan-dark);font-weight:500;margin-bottom:6px}
+.pname{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--espresso);margin-bottom:8px}
+.pdesc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.plink{display:inline-flex;align-items:center;gap:8px;color:var(--tan-dark);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:gap .3s}
+.plink:hover{gap:14px}
+.codetail{padding:100px 60px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.dvis{position:relative;height:500px;overflow:hidden}
+.dvis img{width:100%;height:100%;object-fit:cover;display:block}
+.dph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(200,169,110,.18);cursor:pointer}
+.dph:hover{border-color:var(--gold)}
+.dph-i{font-size:42px;opacity:.26;margin-bottom:14px}
+.dph-l{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tan);opacity:.6}
+.dph-s{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(232,217,188,.32);margin-top:6px}
+.dbadge{position:absolute;bottom:24px;right:24px;background:var(--espresso);color:var(--tan-light);padding:16px;text-align:center;z-index:2}
+.dbadge .n{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1}
+.dbadge .l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);margin-top:4px}
+.dbody{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:18px;font-weight:300}
+.dbody strong{color:var(--espresso);font-weight:500}
+.srow{display:flex;margin:28px 0;border:1px solid var(--border)}
+.scell{flex:1;padding:20px;border-right:1px solid var(--border);text-align:center}
+.scell:last-child{border-right:none}
+.sv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--espresso)}
+.sl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.dtags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.dtag{padding:6px 14px;background:var(--tan-light);color:var(--brown);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.inqsec{padding:100px 60px;background:var(--ivory);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.iform{background:var(--white);border:1px solid var(--border);padding:40px}
+.iform input,.iform textarea{width:100%;padding:15px 18px;border:1px solid var(--border);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;outline:none;transition:.3s;margin-bottom:14px;display:block;box-sizing:border-box}
+.iform input:focus,.iform textarea:focus{border-color:var(--gold)}
+.iform textarea{min-height:130px;resize:none}
+.crow{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.crow:last-child{border-bottom:none}
+.cico{width:40px;height:40px;background:var(--espresso);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex-shrink:0}
+.clbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--tan-dark);display:block;margin-bottom:3px}
+.cval{font-size:14px;color:var(--espresso)}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+<div class="topbar">
+  <div>📍 Plot No. 8, 14/3, Mathura Road, Faridabad, India</div>
+  <div class="topbar-right"><a href="tel:+919999831332">☎ +91 9999 831 332</a><a href="mailto:explicit@explicitleathers.in">✉ explicit@explicitleathers.in</a></div>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">Explicit Leather<span>Group — Est. 1990</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="companies.html" class="active">Companies</a></li>
+    <li><a href="finished-leather.html">Finished Leather</a></li><li><a href="corporate-gifting.html">Gifting</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-inner fade-up">
+    <div class="ph-eyebrow"><div class="line"></div><span>02 / 04 — Leather Tannery</span></div>
+    <h1>Exquisite<br><em>Enterprises</em></h1>
+    <p>A leather manufacturing tannery, set up in 1984 in Faridabad — processing approximately 6,000 skins a day, per shift, from the wet blue stage through to finished leather.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="companies.html">Companies</a><span class="breadcrumb-sep">›</span><span>Exquisite Enterprises</span></div>
+  </div>
+</div>
+<div class="marquee-strip"><div class="marquee-track"><div class="marquee-item"><span class="marquee-dot"></span>Wool Sheep Skins</div><div class="marquee-item"><span class="marquee-dot"></span>Kashmir Sheep &amp; Goat</div><div class="marquee-item"><span class="marquee-dot"></span>Cowcalf Leather</div><div class="marquee-item"><span class="marquee-dot"></span>Wet Blue to Finished</div><div class="marquee-item"><span class="marquee-dot"></span>6,000 Skins / Day</div><div class="marquee-item"><span class="marquee-dot"></span>Est. 1984</div><div class="marquee-item"><span class="marquee-dot"></span>Wool Sheep Skins</div><div class="marquee-item"><span class="marquee-dot"></span>Kashmir Sheep &amp; Goat</div><div class="marquee-item"><span class="marquee-dot"></span>Cowcalf Leather</div><div class="marquee-item"><span class="marquee-dot"></span>Wet Blue to Finished</div><div class="marquee-item"><span class="marquee-dot"></span>6,000 Skins / Day</div><div class="marquee-item"><span class="marquee-dot"></span>Est. 1984</div></div></div>
+
+<section style="padding:100px 60px;background:var(--ivory)">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span>Gallery</span><div class="eyebrow-line"></div></div>
+    <h2 class="section-title">Our <em>Work</em></h2>
+    <p class="section-desc">Add your company and product photos — replace each placeholder with your image.</p>
+  </div>
+  <div class="photo-slider fade-up" id="photoSlider">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide"><img src="images/scorpius.jpg" alt="Exquisite Enterprises Photo 1"></div>
+      <div class="slide"><img src="images/exquisite-banner.jpg" alt="Exquisite Enterprises Photo 2"></div>
+      <div class="slide"><img src="images/08.jpg" alt="Exquisite Enterprises Photo 3"></div>
+      <div class="slide"><img src="images/10.jpg" alt="Exquisite Enterprises Photo 4"></div>
+      <div class="slide"><img src="images/12.jpg" alt="Exquisite Enterprises Photo 5"></div>
+      <div class="slide"><img src="images/07.jpg" alt="Exquisite Enterprises Photo 6"></div>
+      <!-- Add more photos: <div class="slide"><img src="images/your-photo.jpg" alt="Photo"></div> -->
+    </div>
+    <button class="slider-arrow prev" id="prevBtn" aria-label="Previous photo">‹</button>
+    <button class="slider-arrow next" id="nextBtn" aria-label="Next photo">›</button>
+    <div class="slider-counter" id="sliderCounter">1 / 6</div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const track = document.getElementById('sliderTrack');
+  const slides = track.querySelectorAll('.slide');
+  const dotsWrap = document.getElementById('sliderDots');
+  const counter = document.getElementById('sliderCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+  const total = slides.length;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = dotsWrap.querySelectorAll('.slider-dot');
+
+  function update(){
+    track.style.transform = 'translateX(' + (-current * 100) + '%)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+  function goTo(i){ current = (i + total) % total; update(); }
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  let autoplay = setInterval(next, 4500);
+  const sliderEl = document.getElementById('photoSlider');
+  sliderEl.addEventListener('mouseenter', () => clearInterval(autoplay));
+  sliderEl.addEventListener('mouseleave', () => autoplay = setInterval(next, 4500));
+
+  let startX = 0, isDown = false, dragDist = 0;
+  function pointerDown(x){ isDown = true; startX = x; dragDist = 0; clearInterval(autoplay); }
+  function pointerMove(x){ if(!isDown) return; dragDist = x - startX; }
+  function pointerUp(){
+    if(!isDown) return;
+    isDown = false;
+    if(dragDist < -50) next();
+    else if(dragDist > 50) prev();
+    autoplay = setInterval(next, 4500);
+  }
+  track.addEventListener('touchstart', e => pointerDown(e.touches[0].clientX), {passive:true});
+  track.addEventListener('touchmove', e => pointerMove(e.touches[0].clientX), {passive:true});
+  track.addEventListener('touchend', pointerUp);
+  track.addEventListener('mousedown', e => { e.preventDefault(); pointerDown(e.clientX); });
+  window.addEventListener('mousemove', e => pointerMove(e.clientX));
+  window.addEventListener('mouseup', pointerUp);
+
+  update();
+})();
+</script>
+
+<section class="codetail">
+  <div class="dvis fade-up" style="background:linear-gradient(160deg,#0e1a05,#3a6a1a 55%,#8BC858)">
+    <!-- <img src="company-photo.jpg" alt="Leather Tannery"> -->
+    <!-- <div class="dph"><div class="dph-i">🏭</div><div class="dph-l">Company / Factory Photo</div><div class="dph-s">Replace with img src=""</div></div> -->
+     <img src="images/07.jpg" alt="Exquisite Enterprises Tannery">
+    <div class="dbadge"><div class="n">1984</div><div class="l">Founded</div></div>
+  </div>
+  <div class="fade-up">
+    <div class="section-header left">
+      <div class="section-eyebrow left"><div class="eyebrow-line"></div><span>About Exquisite Enterprises</span></div>
+      <h2 class="section-title">The Group's<br><em>Tannery</em></h2>
+    </div>
+    <p class="dbody">Exquisite Enterprises Pvt. Ltd. is a sister concern owned by the promoters — a <strong>leather manufacturing tannery</strong> set up in 1984 in Faridabad, Haryana, on the outskirts of Delhi. Approximately <strong>6,000 skins per day, per shift</strong>, are presently processed from the wet blue stage to finished leather.</p>
+    <p class="dbody">The tannery is located within a 10-minute drive of the export unit and is used as the <strong>kitchen for new development</strong> of leather. It specializes in North Indian wool sheep skins, Kashmir sheep, goat, and cowcalf, with the expertise to make products in English Domestic, Middle Eastern, New Zealand and Spanish Enterfinos leathers, as well as African origin skins. At any given time, the tannery holds a stock of more than <strong>3,00,000 skins</strong>.</p>
+    <div class="srow">
+      <div class="scell"><div class="sv">6,000</div><div class="sl">Skins / Day / Shift</div></div>
+      <div class="scell"><div class="sv">3,00,000+</div><div class="sl">Skins in Stock</div></div>
+      <div class="scell"><div class="sv">1984</div><div class="sl">Established</div></div>
+    </div>
+    <div class="dtags"><span class="dtag">Wool Sheep Skins</span><span class="dtag">Kashmir Sheep &amp; Goat</span><span class="dtag">Cowcalf</span><span class="dtag">Wet Blue to Finished</span><span class="dtag">Enterfinos Leathers</span></div>
+    <div style="margin-top:28px"><a href="contact.html" class="btn-primary">Send Inquiry</a></div>
+  </div>
+</section>
+<section class="products-catalog">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span>Product Catalog</span><div class="eyebrow-line"></div></div>
+    <h2 class="section-title">Our <em>Collections</em></h2>
+    <p class="section-desc">Add your product photos — replace each placeholder with your image path.</p>
+  </div>
+  <div class="pg">
+    <div class="pcard fade-up">
+      <div class="pphoto" style="background:linear-gradient(135deg,#0e1a05,#3a6a1a)">
+        <!-- <img src="product.jpg" alt="North Indian Wool Sheep Skins"> -->
+        <!-- <div class="pph"><div class="pph-i">📷</div><div class="pph-l">Add Product Photo</div></div> -->
+        <img src="images/suedr febric.png" alt="North Indian Wool Sheep Skins">
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Signature</div>
+        <div class="pname">North Indian Wool Sheep Skins</div>
+        <div class="pdesc">Sourced and processed from wet blue to finished leather at our own tannery.</div>
+        <a href="contact.html" class="plink">Enquire →</a>
+      </div>
+    </div>
+    <div class="pcard fade-up">
+      <div class="pphoto" style="background:linear-gradient(135deg,#08120a,#2a5010)">
+        <!-- <img src="product.jpg" alt="Kashmir Sheep & Goat Leather"> -->
+        <!-- <div class="pph"><div class="pph-i">📷</div><div class="pph-l">Add Product Photo</div></div> -->
+        <img src="images/croco.png" alt="Kashmir Sheep & Goat Leather">
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Specialty</div>
+        <div class="pname">Kashmir Sheep &amp; Goat Leather</div>
+        <div class="pdesc">A core specialty of the tannery — finely processed Kashmir sheep and goat leathers.</div>
+        <a href="contact.html" class="plink">Enquire →</a>
+      </div>
+    </div>
+    <div class="pcard fade-up">
+      <div class="pphoto" style="background:linear-gradient(135deg,#05080a,#1a3a08)">
+        <!-- <img src="product.jpg" alt="Cowcalf Leather"> -->
+         <!-- <div class="pph"><div class="pph-i">📷</div><div class="pph-l">Add Product Photo</div></div> -->
+        <img src="images/grey.png" alt="Cowcalf Leather"> 
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Tannery</div>
+        <div class="pname">Cowcalf Leather</div>
+        <div class="pdesc">Premium cowcalf leather processed in-house from raw stage to finished output.</div>
+        <a href="contact.html" class="plink">Enquire →</a>
+      </div>
+    </div>
+    <div class="pcard fade-up">
+      <div class="pphoto" style="background:linear-gradient(135deg,#0a1805,#306018)">
+        <!-- <img src="product.jpg" alt="English Domestic & Middle Eastern Leathers"> -->
+        <!-- <div class="pph"><div class="pph-i">📷</div><div class="pph-l">Add Product Photo</div></div> -->
+        <img src="images/new_npaa.png" alt="English Domestic & Middle Eastern Leathers">
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Expertise</div>
+        <div class="pname">English Domestic &amp; Middle Eastern Leathers</div>
+        <div class="pdesc">Expertise in making products from English Domestic and Middle Eastern origin leathers.</div>
+        <a href="contact.html" class="plink">Enquire →</a>
+      </div>
+    </div>
+    <div class="pcard fade-up">
+      <div class="pphoto" style="background:linear-gradient(135deg,#061005,#204010)">
+        <!-- <img src="product.jpg" alt="New Zealand & Spanish Enterfinos"> -->
+        <!-- <div class="pph"><div class="pph-i">📷</div><div class="pph-l">Add Product Photo</div></div> -->
+        <img src="images/mil-2.png" alt="New Zealand & Spanish Enterfinos">
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Expertise</div>
+        <div class="pname">New Zealand &amp; Spanish Enterfinos</div>
+        <div class="pdesc">Experience producing New Zealand and Spanish Enterfinos leathers to international standards.</div>
+        <a href="contact.html" class="plink">Enquire →</a>
+      </div>
+    </div>
+    <div class="pcard fade-up">
+      <div class="pphoto" style="background:linear-gradient(135deg,#0e1a05,#8BC858)">
+        <!-- <img src="product.jpg" alt="African Origin Skins"> -->
+        <!-- <div class="pph"><div class="pph-i">📷</div><div class="pph-l">Add Product Photo</div></div> -->
+        <img src="images/textre.png" alt="African Origin Skins">
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Sourcing</div>
+        <div class="pname">African Origin Skins</div>
+        <div class="pdesc">Processing capability for African origin skins, held in stock alongside our regular range.</div>
+        <a href="contact.html" class="plink">Enquire →</a>
+      </div>
+    </div></div>
+</section>
+
+<section class="stats-banner">
+  <div class="stat-item fade-up"><div class="stat-num">6,000</div><span class="stat-unit">Per Day</span><div class="stat-label">Skins / Shift Processed</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">3,00,000+</div><span class="stat-unit">In Stock</span><div class="stat-label">Skins Held</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">10 Min</div><span class="stat-unit">Distance</span><div class="stat-label">From Export Unit</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">1984</div><span class="stat-unit">Since</span><div class="stat-label">Established</div></div>
+</section>
+
+<section class="inqsec">
+  <div class="fade-up">
+    <div class="section-header left">
+      <div class="section-eyebrow left"><div class="eyebrow-line"></div><span>Get In Touch</span></div>
+      <h2 class="section-title">Request Our<br><em>Catalogue</em></h2>
+      <p class="section-desc">Our team responds within 24 hours.</p>
+    </div>
+    <div style="margin-top:32px">
+      <div class="crow"><div class="cico">📍</div><div><span class="clbl">Address</span><span class="cval">Plot No. 8, 14/3, Mathura Road, Faridabad</span></div></div>
+      <div class="crow"><div class="cico">☎</div><div><span class="clbl">Phone</span><span class="cval">+91 9999 831 332</span></div></div>
+      <div class="crow"><div class="cico">✉</div><div><span class="clbl">Email</span><span class="cval">explicit@explicitleathers.in</span></div></div>
+    </div>
+    <div style="margin-top:28px"><a href="companies.html" class="btn-ghost">← Back to Companies <span class="arr"></span></a></div>
+  </div>
+  <div class="iform fade-up">
+    <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--espresso);margin-bottom:6px">Send Inquiry</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:24px">Exquisite Enterprises — Leather Tannery, Faridabad</div>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Email Address">
+    <input type="text" placeholder="Company / Brand Name">
+    <input type="text" placeholder="Requirement (e.g. Finished Leather — Wool Sheep)">
+    <textarea placeholder="Describe your requirement in detail..."></textarea>
+    <button class="btn-primary" style="width:100%;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.18em">Send Inquiry →</button>
+  </div>
+</section>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-name">Explicit Leather Group</div><div class="footer-brand-sub">Est. 1990 · Faridabad, India</div><p class="footer-desc">India's premier leather manufacturing group — pioneers of garment-washed and specialty-dyed leather for global markets.</p><div class="footer-social"><a class="social-btn" href="#">in</a><a class="social-btn" href="#">IG</a><a class="social-btn" href="#">fb</a></div></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Leather Products</a></li><li><a href="finished-leather.html">Finished Leather</a></li><li><a href="corporate-gifting.html">Corporate Gifting</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div><div class="footer-col-title">Group Companies</div><ul class="footer-links">
+      <li><a href="company-explicit-leathers.html">Explicit Leathers</a></li>
+      <li><a href="company-exquisite.html">Exquisite Enterprises</a></li>
+      <li><a href="company-gee-gee.html">Gee &amp; Gee Industries</a></li>
+      <li><a href="company-scorpius.html">Scorpius Enterprises</a></li>
+      <li><a href="https://nauvab.com/" target="_blank">Nauvab ↗</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Explicit Leather Group. All rights reserved.</span><span>Faridabad, Haryana, India</span></div>
+</footer>
+<a class="scroll-top" href="#" id="scrollTop">↑</a>
+<script src="common.js"></script>
+</body></html>

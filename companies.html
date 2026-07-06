@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Companies — Explicit Leather Group</title>
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="mobile.css"> 
+<style>
+.company-block{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.company-block.reverse{direction:rtl}.company-block.reverse>*{direction:ltr}
+.company-block:nth-child(even){background:var(--white)}.company-block:nth-child(odd){background:var(--ivory)}
+.cb-visual{position:relative;height:460px;overflow:hidden}
+.cbv1{background:linear-gradient(160deg,#1a0e05,#6B4423 50%,#C8A96E)}
+.cbv2{background:linear-gradient(160deg,#0e1a05,#3a6a1a 50%,#8BC858)}
+.cbv3{background:linear-gradient(160deg,#0e0a1a,#3a2070 50%,#A870C8)}
+.cbv4{background:linear-gradient(160deg,#1a0a12,#6a1a3a 50%,#C87090)}
+.cb-tex{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(255,255,255,.02) 3px,rgba(255,255,255,.02) 6px)}
+.cb-num{position:absolute;top:28px;left:28px;font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:rgba(255,255,255,.08);line-height:1}
+.cb-badge{position:absolute;bottom:28px;right:28px;background:rgba(0,0,0,.5);border:1px solid rgba(200,169,110,.3);backdrop-filter:blur(8px);padding:14px 18px}
+.cb-badge .bl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);margin-bottom:4px}
+.cb-badge .bv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--white)}
+.cb-text .company-num{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--tan-dark);font-weight:500;margin-bottom:12px}
+.cb-text .company-name{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--espresso);line-height:1.1;margin-bottom:8px}
+.cb-text .company-name em{font-style:italic;color:var(--tan-dark)}
+.cb-text .company-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--muted);margin-bottom:24px;line-height:1.5}
+.cb-divider{width:48px;height:2px;background:var(--gold);margin-bottom:24px}
+.cb-body{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:20px;font-weight:300}
+.cb-body strong{color:var(--espresso);font-weight:500}
+.cb-specs{display:flex;gap:28px;margin:24px 0;padding:22px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cb-spec .s-val{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--espresso)}
+.cb-spec .s-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.cb-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.cb-tag{padding:6px 14px;background:var(--tan-light);color:var(--brown);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+
+/* CATALOG BUTTON */
+.catalog-btn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:14px 28px;background:var(--espresso);color:var(--tan-light);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;text-decoration:none;border:1px solid var(--espresso);transition:all .3s}
+.catalog-btn:hover{background:transparent;color:var(--espresso)}
+.catalog-btn.external{background:transparent;color:var(--espresso);border-color:var(--espresso)}
+.catalog-btn.external:hover{background:var(--espresso);color:var(--tan-light)}
+.catalog-btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+
+/* HOVER EFFECT ON VISUAL */
+.cb-visual{cursor:pointer;transition:opacity .3s}
+.cb-visual:hover{opacity:.9}
+.cb-visual a{display:block;position:absolute;inset:0;z-index:5}
+
+.overview-grid{padding:80px 60px;background:var(--espresso);display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.og-item{padding:50px 20px;border-right:1px solid rgba(200,169,110,.15);text-align:center;transition:background .3s;cursor:pointer;text-decoration:none;display:block}
+.og-item:last-child{border-right:none}
+.og-item:hover{background:rgba(200,169,110,.06)}
+.og-num{font-family:'Playfair Display',serif;font-size:12px;font-weight:400;color:var(--gold);letter-spacing:.3em;margin-bottom:14px}
+.og-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
+.og-desc{font-size:11px;color:rgba(232,217,188,.55);line-height:1.6}
+.og-arrow{font-size:11px;color:var(--gold);margin-top:12px;opacity:0;transition:opacity .3s}
+.og-item:hover .og-arrow{opacity:1}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+<div class="topbar">
+  <div>📍 Plot No. 8, 14/3, Mathura Road, Faridabad, India</div>
+  <div class="topbar-right"><a href="tel:+919999831332">☎ +91 9999 831 332</a><a href="mailto:explicit@explicitleathers.in">✉ explicit@explicitleathers.in</a></div>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">Explicit Leather<span>Group — Est. 1990</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="companies.html" class="active">Companies</a></li>
+    <li><a href="finished-leather.html">Finished Leather</a></li><li><a href="corporate-gifting.html">Gifting</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner fade-up">
+    <div class="ph-eyebrow"><div class="line"></div><span>The Group</span></div>
+    <h1>Four Companies,<br>One <em>Vision</em></h1>
+    <p>Each enterprise within the Explicit Leather Group specialises in a unique domain — together forming India's most integrated premium leather conglomerate.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Our Companies</span></div>
+  </div>
+</div>
+
+<div class="overview-grid">
+  <a class="og-item fade-up" href="company-explicit-leathers.html">
+    <div class="og-num">01</div><div class="og-name">Explicit Import Export Private Limited</div>
+    <div class="og-desc">Garments &amp; accessories — the flagship enterprise</div>
+    <div class="og-arrow">View Catalog →</div>
+  </a>
+  <a class="og-item fade-up" href="company-exquisite.html">
+    <div class="og-num">02</div><div class="og-name">Exquisite Enterprises</div>
+    <div class="og-desc">Innovative leather manufacturing</div>
+    <div class="og-arrow">View Catalog →</div>
+  </a>
+  <a class="og-item fade-up" href="company-gee-gee.html">
+    <div class="og-num">03</div><div class="og-name">Gee &amp; Gee Industries</div>
+    <div class="og-desc">Tannery operations &amp; finished leather</div>
+    <div class="og-arrow">View Catalog →</div>
+  </a>
+  <a class="og-item fade-up" href="company-scorpius.html">
+    <div class="og-num">04</div><div class="og-name">Scorpius Enterprises</div>
+    <div class="og-desc">Luxury goods for international markets
+</div>
+    <div class="og-arrow">View Catalog →</div>
+  </a>
+</div>
+<!-- COMPANY 1 -->
+<!-- <section class="company-block">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-explicit-leathers.html" title="View Explicit Import Export Private Limited Catalog"></a>
+    <div class="cbv1" style="position:absolute;inset:0"></div><div class="cb-tex"></div>
+    <div class="cb-num">01</div>
+    <div class="cb-badge"><div class="bl">Production</div><div class="bv">180K/yr</div></div>
+     <img src="images/01.jpg" alt="Tannery">
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">01 / 04</div>
+    <div class="company-name">Explicit <em>Leathers</em></div>
+    <div class="company-sub">The flagship enterprise of the group</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">The original and <strong>flagship enterprise</strong> of the Explicit Leather Group. Founded in 1990, Explicit Leathers is a leather goods and garments manufacturing firm and a <strong>Recognised Export House</strong> under the Council of Leather Exports, Government of India.</p>
+    <p class="cb-body">Explicit are world-renowned for their <strong>Garment Washed and Garment Dyed products</strong>, having pioneered the "used", "oiled", and "retro" looks which remain in vogue globally after 12+ years.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">180K</div><div class="s-lbl">Garments / Year</div></div>
+      <div class="cb-spec"><div class="s-val">35+</div><div class="s-lbl">Years Operating</div></div>
+      <div class="cb-spec"><div class="s-val">Global</div><div class="s-lbl">Export Markets</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Garments</span><span class="cb-tag">Accessories</span><span class="cb-tag">Export House</span><span class="cb-tag">Washed Leather</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-explicit-leathers.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY 2 -->
+<!-- <section class="company-block reverse">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-exquisite.html" title="View Exquisite Enterprises Catalog"></a>
+    <div class="cbv2" style="position:absolute;inset:0"></div><div class="cb-tex"></div>
+    <div class="cb-num">02</div>
+    <div class="cb-badge"><div class="bl">Segment</div><div class="bv">Luxury Goods</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">02 / 04</div>
+    <div class="company-name">Exquisite <em>Enterprises</em></div>
+    <div class="company-sub">High-end leather goods for global luxury markets</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">Exquisite Enterprises focuses on the <strong>premium accessories and luxury goods</strong> segment, crafting leather products that meet the exacting standards of international fashion houses and retailers.</p>
+    <p class="cb-body">From handbags to bespoke leather accessories, every piece is crafted with <strong>meticulous attention to detail</strong>, using the finest leathers sourced from the group's own tanneries.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">Luxury</div><div class="s-lbl">Market Focus</div></div>
+      <div class="cb-spec"><div class="s-val">Bespoke</div><div class="s-lbl">Customisation</div></div>
+      <div class="cb-spec"><div class="s-val">EU+</div><div class="s-lbl">Export Markets</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Handbags</span><span class="cb-tag">Accessories</span><span class="cb-tag">Luxury Goods</span><span class="cb-tag">Custom Orders</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-exquisite.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY 3 -->
+<!-- <section class="company-block">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-gee-gee.html" title="View Gee & Gee Catalog"></a>
+    <div class="cbv3" style="position:absolute;inset:0"></div><div class="cb-tex"></div>
+    <div class="cb-num">03</div>
+    <div class="cb-badge"><div class="bl">Capacity</div><div class="bv">84L Sq Ft</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">03 / 04</div>
+    <div class="company-name">Gee &amp; Gee <em>Industries</em></div>
+    <div class="company-sub">Tannery operations &amp; finished leather production</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">Gee &amp; Gee Industries is the tannery backbone of the Explicit Leather Group. Their operations contribute to the group's <strong>combined production capacity of 84 Lakh sq ft per year</strong> — one of the largest in the region.</p>
+    <p class="cb-body">The company specialises in <strong>finishing and processing raw hides</strong> into premium finished leathers that supply both the group's own manufacturing units and external buyers globally.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">84L</div><div class="s-lbl">Sq Ft / Year</div></div>
+      <div class="cb-spec"><div class="s-val">Multi</div><div class="s-lbl">Leather Types</div></div>
+      <div class="cb-spec"><div class="s-val">B2B</div><div class="s-lbl">Supply Focus</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Tannery</span><span class="cb-tag">Finished Leather</span><span class="cb-tag">B2B Supply</span><span class="cb-tag">High Volume</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-gee-gee.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section> -->
+
+<!-- COMPANY 4 -->
+<!-- <section class="company-block reverse">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-exquisite.html" title="View Exquisite Enterprises Catalog"></a>
+    <div class="cbv4" style="position:absolute;inset:0"></div><div class="cb-tex"></div>
+    <div class="cb-num">04</div>
+    <div class="cb-badge"><div class="bl">Specialty</div><div class="bv">Innovation</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">04 / 04</div>
+    <div class="company-name">Exquisite <em>Enterprises</em></div>
+    <div class="company-sub">Innovative leather manufacturing &amp; finishing</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">Exquisite Enterprises represents the <strong>innovation arm</strong> of the Explicit Leather Group, pushing the boundaries of leather technology with cutting-edge tanning processes and premium specialty finishes.</p>
+    <p class="cb-body">Exquisite focuses on developing <strong>next-generation leather finishes and treatments</strong> that give the group a competitive edge in delivering trend-forward products to global fashion buyers.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">R&amp;D</div><div class="s-lbl">Focus Area</div></div>
+      <div class="cb-spec"><div class="s-val">Specialty</div><div class="s-lbl">Finishes</div></div>
+      <div class="cb-spec"><div class="s-val">Global</div><div class="s-lbl">Innovation Reach</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Innovation</span><span class="cb-tag">Specialty Finishes</span><span class="cb-tag">R&amp;D</span><span class="cb-tag">Manufacturing</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-exquisite.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section> -->
+<section class="company-block">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-explicit-leathers.html" title="View Explicit Import Export Private Limited Catalog"></a>
+    <div class="cbv1" style="position:absolute;inset:0">
+      <img src="images/01.jpg" class="company-image" alt="Explicit Leathers Tannery">
+    </div>
+    <div class="cb-tex"></div>
+    <div class="cb-num">01</div>
+    <div class="cb-badge"><div class="bl">Production</div><div class="bv">180K/yr</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">01 / 04</div>
+    <div class="company-name">Explicit <em>Leathers</em></div>
+    <div class="company-sub">The flagship enterprise of the group</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">The original and <strong>flagship enterprise</strong> of the Explicit Leather Group. Founded in 1990, Explicit Leathers is a leather goods and garments manufacturing firm and a <strong>Recognised Export House</strong> under the Council of Leather Exports, Government of India.</p>
+    <p class="cb-body">Explicit are world-renowned for their <strong>Garment Washed and Garment Dyed products</strong>, having pioneered the "used", "oiled", and "retro" looks which remain in vogue globally after 12+ years.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">180K</div><div class="s-lbl">Garments / Year</div></div>
+      <div class="cb-spec"><div class="s-val">35+</div><div class="s-lbl">Years Operating</div></div>
+      <div class="cb-spec"><div class="s-val">Global</div><div class="s-lbl">Export Markets</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Garments</span><span class="cb-tag">Accessories</span><span class="cb-tag">Export House</span><span class="cb-tag">Washed Leather</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-explicit-leathers.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section>
+
+<section class="company-block reverse">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-exquisite.html" title="View Exquisite Enterprises Catalog"></a>
+    <div class="cbv2" style="position:absolute;inset:0">
+      <img src="images/01.jpg" class="company-image" alt="Luxury Leather Goods Production">
+    </div>
+    <div class="cb-tex"></div>
+    <div class="cb-num">02</div>
+    <div class="cb-badge"><div class="bl">Segment</div><div class="bv">Luxury Goods</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">02 / 04</div>
+    <div class="company-name">Scorpius <em>Enterprises</em></div>
+    <div class="company-sub">High-end leather goods for global luxury markets</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">Scorpius Enterprises focuses on the <strong>premium accessories and luxury goods</strong> segment, crafting leather products that meet the exacting standards of international fashion houses and retailers.</p>
+    <p class="cb-body">From handbags to bespoke leather accessories, every piece is crafted with <strong>meticulous attention to detail</strong>, using the finest leathers sourced from the group's own tanneries.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">Luxury</div><div class="s-lbl">Market Focus</div></div>
+      <div class="cb-spec"><div class="s-val">Bespoke</div><div class="s-lbl">Customisation</div></div>
+      <div class="cb-spec"><div class="s-val">EU+</div><div class="s-lbl">Export Markets</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Handbags</span><span class="cb-tag">Accessories</span><span class="cb-tag">Luxury Goods</span><span class="cb-tag">Custom Orders</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-exquisite.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section>
+
+<section class="company-block">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-gee-gee.html" title="View Gee & Gee Catalog"></a>
+    <div class="cbv3" style="position:absolute;inset:0">
+      <img src="images/43.jpg" class="company-image" alt="Tannery Operations">
+    </div>
+    <div class="cb-tex"></div>
+    <div class="cb-num">03</div>
+    <div class="cb-badge"><div class="bl">Capacity</div><div class="bv">84L Sq Ft</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">03 / 04</div>
+    <div class="company-name">Gee &amp; Gee <em>Industries</em></div>
+    <div class="company-sub">Tannery operations &amp; finished leather production</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">Gee &amp; Gee Industries is the tannery backbone of the Explicit Leather Group. Their operations contribute to the group's <strong>combined production capacity of 84 Lakh sq ft per year</strong> — one of the largest in the region.</p>
+    <p class="cb-body">The company specialises in <strong>finishing and processing raw hides</strong> into premium finished leathers that supply both the group's own manufacturing units and external buyers globally.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">84L</div><div class="s-lbl">Sq Ft / Year</div></div>
+      <div class="cb-spec"><div class="s-val">Multi</div><div class="s-lbl">Leather Types</div></div>
+      <div class="cb-spec"><div class="s-val">B2B</div><div class="s-lbl">Supply Focus</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Tannery</span><span class="cb-tag">Finished Leather</span><span class="cb-tag">B2B Supply</span><span class="cb-tag">High Volume</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-gee-gee.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section>
+
+<section class="company-block reverse">
+  <div class="cb-visual fade-up" style="position:relative">
+    <a href="company-exquisite.html" title="View Exquisite Enterprises Catalog"></a>
+    <div class="cbv4" style="position:absolute;inset:0">
+      <img src="images/07.jpg" class="company-image" alt="R&D Leather Finishing">
+    </div>
+    <div class="cb-tex"></div>
+    <div class="cb-num">04</div>
+    <div class="cb-badge"><div class="bl">Specialty</div><div class="bv">Innovation</div></div>
+  </div>
+  <div class="cb-text fade-up">
+    <div class="company-num">04 / 04</div>
+    <div class="company-name">Exquisite<em>Enterprises</em></div>
+    <div class="company-sub">Innovative leather manufacturing &amp; finishing</div>
+    <div class="cb-divider"></div>
+    <p class="cb-body">Exquisite Enterprises represents the <strong>innovation arm</strong> of the Explicit Leather Group, pushing the boundaries of leather technology with cutting-edge tanning processes and premium specialty finishes.</p>
+    <p class="cb-body">Exquisite focuses on developing <strong>next-generation leather finishes and treatments</strong> that give the group a competitive edge in delivering trend-forward products to global fashion buyers.</p>
+    <div class="cb-specs">
+      <div class="cb-spec"><div class="s-val">R&amp;D</div><div class="s-lbl">Focus Area</div></div>
+      <div class="cb-spec"><div class="s-val">Specialty</div><div class="s-lbl">Finishes</div></div>
+      <div class="cb-spec"><div class="s-val">Global</div><div class="s-lbl">Innovation Reach</div></div>
+    </div>
+    <div class="cb-tags"><span class="cb-tag">Innovation</span><span class="cb-tag">Specialty Finishes</span><span class="cb-tag">R&amp;D</span><span class="cb-tag">Manufacturing</span></div>
+    <div class="catalog-btn-row">
+      <a href="company-exquisite.html" class="catalog-btn">View Full Catalog →</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats-banner">
+  <div class="stat-item fade-up"><div class="stat-num">4</div><span class="stat-unit">Enterprises</span><div class="stat-label">Group Companies</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">2.1M</div><span class="stat-unit">Sq Ft / Year</span><div class="stat-label">Combined Production</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">35+</div><span class="stat-unit">Years</span><div class="stat-label">Industry Presence</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">Global</div><span class="stat-unit">Markets</span><div class="stat-label">Export Destinations</div></div>
+</section>  -->
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand-name">Explicit Leather Group</div><div class="footer-brand-sub">Est. 1990 · Faridabad, India</div><p class="footer-desc">India's premier leather manufacturing group — pioneers of garment-washed and specialty-dyed leather for global markets.</p><div class="footer-social"><a class="social-btn" href="#">in</a><a class="social-btn" href="#">IG</a><a class="social-btn" href="#">fb</a></div></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Leather Products</a></li><li><a href="finished-leather.html">Finished Leather</a></li><li><a href="corporate-gifting.html">Corporate Gifting</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div><div class="footer-col-title">Group Companies</div><ul class="footer-links">
+      <li><a href="company-explicit-leathers.html">Explicit Import Export Private Limited</a></li>
+      <li><a href="company-exquisite.html">Exquisite Enterprises</a></li>
+      <li><a href="company-gee-gee.html">Gee &amp; Gee Industries</a></li>
+      <li><a href="company-scorpius.html">Scorpius Enterprises</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Explicit Leather Group. All rights reserved.</span><span>Faridabad, Haryana, India</span></div>
+</footer>
+<a class="scroll-top" href="#" id="scrollTop">↑</a>
+<script src="common.js"></script>
+</body></html>
